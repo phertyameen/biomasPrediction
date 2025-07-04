@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Green Biomass % Predictor</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #f3fdf4;
+      background-image: url('https://images.unsplash.com/photo-1581276879432-15a8b4f13b03?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80');
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 1rem;
+    }
+
+    .form-container {
+      background: rgba(255, 255, 255, 0.9);
+      padding: 2rem;
+      border-radius: 12px;
+      max-width: 500px;
+      width: 100%;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    }
+
+    h2 {
+      text-align: center;
+      color: #2e7d32;
+      margin-bottom: 1.5rem;
+    }
+
+    label {
+      display: block;
+      margin-top: 1rem;
+      font-weight: 600;
+      color: #2e7d32;
+    }
+
+    input, select {
+      padding: 0.5rem;
+      width: 100%;
+      border: 1px solid #c8e6c9;
+      border-radius: 4px;
+      margin-top: 0.25rem;
+    }
+
+    button {
+      display: block;
+      margin: 2rem auto 0;
+      background-color: #43a047;
+      color: white;
+      border: none;
+      padding: 0.6rem 2rem;
+      border-radius: 5px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #2e7d32;
+    }
+
+    .prediction {
+      text-align: center;
+      margin-top: 1.5rem;
+      font-size: 1.2rem;
+      font-weight: bold;
+      color: #1b5e20;
+    }
+  </style>
+</head>
+<body>
+  <div class="form-container">
+    <h2>Predict Green Biomass % from Cover Data</h2>
+
+    <form method="POST">
+      <label>Functional Group:
+        <select name="functional_group">
+          <option value="perennial_grass">Perennial Grass</option>
+          <option value="annual_grass">Annual Grass</option>
+          <option value="shrub">Shrub</option>
+          <option value="tree">Tree</option>
+          <option value="forb">Forb</option>
+          <option value="bare_ground">Bare Ground</option>
+          <option value="litter">Litter</option>
+        </select>
+      </label>
+
+      <label>Presence (0 or 1): <input name="presence" required></label>
+      <label>Green (g, 0 or 1): <input name="g" required></label>
+      <label>Non-Green (ng, 0 or 1): <input name="ng"></label>
+      <label>Sampling Point (1-450): <input name="sampling_point" required></label>
+
+      <label>Transect:
+        <select name="transect">
+          <option value="AB">AB</option>
+          <option value="CD">CD</option>
+          <option value="EF">EF</option>
+        </select>
+      </label>
+
+      <button type="submit">Predict</button>
+    </form>
+
+    {% if prediction is not none %}
+      <div class="prediction">Predicted Green Biomass: {{ prediction }}%</div>
+    {% endif %}
+  </div>
+</body>
+</html>
