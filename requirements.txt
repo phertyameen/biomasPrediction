@@ -36,6 +36,7 @@ jedi==0.19.2
 Jinja2==3.1.2
 joblib==1.5.1
 json5==0.12.0
+gunicorn==21.2.0
 jsonpointer==3.0.0
 jsonschema==4.24.0
 jsonschema-specifications==2025.4.1
@@ -57,7 +58,7 @@ nbformat==5.10.4
 nest-asyncio==1.6.0
 notebook==7.4.4
 notebook_shim==0.2.4
-numpy==2.3.1
+numpy==1.26.4
 openpyxl==3.1.5
 overrides==7.7.0
 packaging==25.0
